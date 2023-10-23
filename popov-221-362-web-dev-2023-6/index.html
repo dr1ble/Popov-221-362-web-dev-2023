@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Попов Лаб 6.Результаты JavaScript</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <main>
+        <h1>Реализация различных функций с помощью JavaScript</h1>
+        <div class="form"><br>
+            <h2>Возведение в степень</h2>
+            <input type="number" id="pow-base" placeholder="Основание" class="input-field">
+            <input type="number" id="pow-exponent" placeholder="Показатель степени" class="input-field">
+            <button class="btn" onclick="calculatePow()">Рассчитать</button>
+            <p id="pow-result"></p>
+        </div>
+
+        <div class="form"><br>
+            <h2>Нахождение НОД</h2>
+            <input type="number" id="gcd-a" placeholder="Число a" class="input-field">
+            <input type="number" id="gcd-b" placeholder="Число b" class="input-field">
+            <button class="btn" onclick="calculateGcd()">Рассчитать</button>
+            <p id="gcd-result"></p>
+        </div>
+
+        <div class="form"><br>
+            <h2>Наименьшая цифра</h2>
+            <input type="number" id="min-digit-input" placeholder="Введите число" class="input-field">
+            <button class="btn" onclick="findMinDigit()">Найти</button>
+            <p id="min-digit-result"></p>
+        </div>
+
+        <div class="form"><br>
+            <h2>Pluralization</h2>
+            <input type="number" id="pluralize-input" placeholder="Введите число" class="input-field">
+            <button class="btn" onclick="generatePluralizedString()">Сгенерировать строку</button>
+            <p id="pluralize-result"></p>
+        </div>
+
+        <div class="form"><br>
+            <h2>Числа Фибоначчи</h2>
+            <input type="number" id="fibb-input" placeholder="Введите число" class="input-field">
+            <button class="btn" onclick="calculateFibb()">Рассчитать</button>
+            <p id="fibb-result"></p>
+        </div>
+    </main>
+
+    <script>
+        // Возведение в степень
+        function calculatePow() {
+            const base = document.getElementById("pow-base").value;
+            const exponent = document.getElementById("pow-exponent").value;
+            const result = document.getElementById("pow-result");
+
+            result.textContent = pow(base, exponent);
+        }
+
+        function pow(x, n) {
+            if (n === 0) {
+                return 1;
+            }
+            let result = x;
+            for (let i = 1; i < n; i++) {
+                result *= x;
+            }
+            return result;
+        }
+
+        // Нахождение НОД
+        function calculateGcd() {
+            const a = document.getElementById("gcd-a").value;
+            const b = document.getElementById("gcd-b").value;
+            const result = document.getElementById("gcd-result");
+
+            result.textContent = gcd(a, b);
+        }
+
+        function gcd(a, b) {
+            while (b !== 0) {
+                let t = b;
+                b = a % b;
+                a = t;
+            }
+            return a;
+        }
+
+        // Наименьшая цифра
+        function findMinDigit() {
+            const x = document.getElementById("min-digit-input").value;
+            const result = document.getElementById("min-digit-result");
+
+            result.textContent = minDigit(x);
+        }
+
+        function minDigit(x) {
+            let min = 9;
+            while (x > 0) {
+                let digit = x % 10;
+                if (digit < min) {
+                    min = digit;
+                }
+                x = Math.floor(x / 10);
+            }
+            return min;
+        }
+
+        // Pluralization
+        function generatePluralizedString() {
+            const n = document.getElementById("pluralize-input").value;
+            const result = document.getElementById("pluralize-result");
+
+            result.textContent = pluralizeRecords(n);
+        }
+
+        function pluralizeRecords(n) {
+            let pluralForm = "";
+            if (n % 10 === 1 && n % 100 !== 11) {
+                pluralForm = "запись";
+            } else if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) {
+                pluralForm = "записи";
+            } else {
+                pluralForm = "записей";
+            }
+            return `В результате выполнения запроса было найдено ${n} ${pluralForm}`;
+        }
+
+        // Числа Фибоначчи
+        function calculateFibb() {
+
+            const n = document.getElementById("fibb-input").value;
+            const result = document.getElementById("fibb-result");
+
+            result.textContent = fibb(n);
+        }
+
+        function fibb(n) {
+            if (n <= 1) {
+                return n;
+            }
+            let a = 0;
+            let b = 1;
+            for (let i = 2; i <= n; i++) {
+                let temp = b;
+                b += a;
+                a = temp;
+            }
+            return b;
+        }
+    </script>
+</body>
+
+</html>
