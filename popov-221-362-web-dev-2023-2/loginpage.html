@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="login-container">
+        <form class="login-form" action="https://httpbin.org/post" method="POST">
+            <h2>Вход</h2>
+            <label for="username">Логин:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label>
+                <input type="checkbox" name="remember"> Запомнить меня
+            </label>
+
+            <button type="submit">Войти</button>
+        </form>
+    </div>
+</body>
+
+</html>

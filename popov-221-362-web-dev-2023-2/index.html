@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Домашняя страница</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Автомир</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a>Главная</a></li>
+            <li><a>О нас</a></li>
+            <li><a>Контакты</a></li>
+            <li><a>Услуги</a></li>
+            <li><a>Наши клиенты</a></li>
+            <li><a href="loginpage.html">Войти</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div>
+            <img src="car.jpg" alt="car">
+        </div>
+        <div>
+            <h2>Mazda RX-7</h2>
+            <p>Mazda RX-7 -
+                Спортивный автомобиль, выпускавшийся японским автопроизводителем Mazda с 1978 по 2002 год.
+                Оригинальная RX-7 оснащалась двухсекционным роторно-поршневым двигателем и имела переднюю
+                среднемоторную, заднеприводную компоновку. RX-7 пришла на смену RX-3 (обе в Японии продавались под
+                маркой Savanna), вытеснила все остальные роторные автомобили Mazda за исключением Cosmo.
+                За всю историю Mazda RX-7 было три поколения. Первое поколение выпускалось с 1978 по 1985 год. Второе
+                поколение — с 1985 по 1991. Третье поколение — с 1992 по 2002 год.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Поколение</th>
+                        <th>Год выпуска</th>
+                        <th>Мощность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 (SA/FB)</td>
+                        <td>1978</td>
+                        <td>105 л.с. </td>
+                    </tr>
+                    <tr>
+                        <td>2 (FC)</td>
+                        <td>1985</td>
+                        <td>185 л.с. </td>
+                    </tr>
+                    <tr>
+                        <td>3 (FD)</td>
+                        <td>1992</td>
+                        <td>265 л.с. </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <!-- Форма обратной связи -->
+    <div class="contact-container">
+        <form class="contact-form" action="https://httpbin.org/post" method="POST" enctype="multipart/form-data">
+            <h2>Обратная связь</h2>
+            <label for="name"><h3>ФИО:</h3></label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email"><h3>Email:</h3></label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="source"><h3>Откуда узнали о нас:</h3></label>
+            <div class="button-source">
+                <input type="radio" id="radio1" name="source" value="Интернет">
+                <label for="radio1">Интернет</label>
+                <input type="radio" id="radio2" name="source" value="Телевидение">
+                <label for="radio2">Телевидение</label>
+                <input type="radio" id="radio3" name="source" value="Друзья">
+                <label for="radio3">Друзья</label>
+            </div>
+            <div class="type-discuss">
+                <label for="type"><h3>Тип обращения:</h3></label>
+                <select id="type" name="type">
+                    <option value="Жалоба">Жалоба</option>
+                    <option value="Предложение">Предложение</option>
+                </select>
+
+
+                <label for="message"><h3>Текст сообщения:</h3></label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <label for="file"><h3>Вложения (файл):</h3></label>
+                <input type="file" id="file" name="file">
+            </div>
+            <label>
+                <input type="checkbox" name="consent"> Даю согласие на обработку персональных данных
+            </label>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2023. Все права защищены.</p>
+        <p>Адрес: г. Москва, ул. Пушкина, д. 10</p>
+        <p>Телефон: +7 (999) 123-45-67</p>
+    </footer>
+</body>
+
+</html>
