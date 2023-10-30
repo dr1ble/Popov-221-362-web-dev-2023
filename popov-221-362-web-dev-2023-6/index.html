@@ -108,7 +108,7 @@
         }
 
         // Pluralization
-        function generatePluralizedString() {
+         function generatePluralizedString() {
             const n = document.getElementById("pluralize-input").value;
             const result = document.getElementById("pluralize-result");
 
@@ -117,14 +117,18 @@
 
         function pluralizeRecords(n) {
             let pluralForm = "";
+            let vebForm = "";
             if (n % 10 === 1 && n % 100 !== 11) {
+                vebForm = "была найдена";
                 pluralForm = "запись";
             } else if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) {
+                vebForm = "были найдены";
                 pluralForm = "записи";
             } else {
+                vebForm = "было найдено";
                 pluralForm = "записей";
             }
-            return `В результате выполнения запроса было найдено ${n} ${pluralForm}`;
+            return `В результате выполнения запроса ${vebForm} ${n} ${pluralForm}`;
         }
 
         // Числа Фибоначчи
