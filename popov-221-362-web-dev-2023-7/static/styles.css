@@ -1,0 +1,83 @@
+body {
+    font-family: 'Prompt', sans-serif;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 900px;
+    margin: 0;
+    background-color: #C8E6C8; /* Светло-зеленый фон */
+}
+
+.calc-container {
+    border: 3px solid #136613; /* Темно-зеленая граница */
+    border-radius: 5px;
+    max-width: 600px; /* Увеличьте максимальную ширину калькулятора */
+    width: 100%; /* Занимать доступную ширину */
+    margin: 0 auto; /* Автоматическое выравнивание по центру по горизонтали */
+    background-color: #E6FFE6; /* Цвет фона контейнера калькулятора - светло-зеленый */
+    padding: 20px; /* Увеличьте отступы для создания более крупного калькулятора */
+}
+
+
+.screen {
+    background-color: #C7FFC7; /* Цвет фона экрана - светло-зеленый */
+    padding: 12px;
+    text-align: right;
+    height: 20px;
+}
+
+.screen span {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 6px;
+    padding: 6px;
+    background-color: #D1FFD1; /* Цвет фона кнопок - светло-зеленый */
+}
+
+.key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #B3FFB3; /* Цвет фона кнопок - зеленый */
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    border: 1px solid #136613; /* Темно-зеленая граница кнопок */
+}
+
+.key:hover {
+    background-color: #C1FFC1; /* Цвет кнопок при наведении - светло-зеленый */
+}
+
+.key.digit {
+    grid-column: span 1;
+}
+
+.key.clear {
+    background-color: #80FF80; /* Цвет кнопки "C" - зеленый */
+    color: #fff;
+}
+
+.key.result {
+    background-color: #5CD65C; /* Цвет кнопки "=" - зеленый */
+    color: #fff;
+}
+
+.buttons .other {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 6px;
+    background-color: #D1FFD1; /* Цвет фона для блока других операций - светло-зеленый */
+}
+
+.buttons .digits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(40px, auto);
+    grid-gap: 6px;
+}
