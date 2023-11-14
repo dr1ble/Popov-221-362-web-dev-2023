@@ -39,7 +39,7 @@ function tokenize(str) {
         if (isOperation(char) || char == '(' || char == ')') {
             tokens.push(char);
         }
-    }
+    }  
     if (lastNumber.length > 0) {
         tokens.push(lastNumber);
     }
