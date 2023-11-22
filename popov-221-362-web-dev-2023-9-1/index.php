@@ -260,16 +260,17 @@
                     $f = round((3 * $x + 9), 2);
                 } 
                 else if ($x > 10 && $x < 20){
+                    if ($x == 11){
+                        $f = 'error';
+                    }
+                    else 
                     $f = round((($x + 3)/(pow($x, 2) - 121)), 2);
                 }
                 else if ($x >= 20){
-                    if ($x == 20){
-                        $f = 'error';
-                    }
-                    else {
-                        $f = round((pow($x, 2) * 4), 2);
-                    }
+                     $f = round((pow($x, 2) * 4), 2);
+    
                 }
+            
 
                 return $f;
             }

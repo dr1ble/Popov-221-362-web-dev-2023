@@ -38,9 +38,6 @@ while ($image_name = mysqli_fetch_assoc($sql)) {
     </div>
     <?php
 }
- 
-
-
 
 ?>
 </div>
