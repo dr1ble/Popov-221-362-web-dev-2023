@@ -16,13 +16,13 @@ if (isset($_GET['id'])) {
         $productQuantity = $row['stock_quantity'];
         $productPhotoPath = $row['photo_path']; // Новое поле для хранения пути к фотографии
 
-        // Ваш HTML-код для отображения деталей продукта
         ?>
         <!DOCTYPE html>
         <html lang="ru">
         
         <head>
             <meta charset="UTF-8">
+            <link rel="stylesheet" href="styles.css">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title><?php echo $productName; ?></title>
         </head>

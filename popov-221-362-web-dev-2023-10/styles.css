@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+    background-color: rgb(224, 224, 224);
+}
+
+.header {
+    background-color: black;
+    color: white;
+    background-image: url(back3.jpg);
+    background-size: cover;
+}
+
+.logo {
+    width: 20%;
+    height: auto;
+}
+
+
+.container {
+    justify-content: center;
+    text-align: center;
+    max-width: 75%;
+    margin: 0 auto;
+}
+
+.footer {
+    background-color: rgb(32, 34, 36);
+    color: white;
+    padding: 2% 0;
+    margin-top: 2%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.py-5 {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.stepStyle {
+    border: 2% solid red; 
+    padding: 8%; 
+    display: inline-block; 
+    margin-right: 8%;
+    margin-bottom: 2%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+ }
+ 
+ td, th {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+ }
+ 
+ th {
+    background-color: lightgray;
+ }
+
+.main {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.btn {
+    text-decoration: none;
+    color: rgb(44, 130, 89);
+    font-weight: bold;
+    border: 5% solid rgb(44, 130, 89);
+    padding: 1%;
+    border-radius: 5%;
+}
+
+.btn:hover {
+    transition: color 0.5s, border-color 0.5s;
+    color: rgb(1, 50, 32);
+    border-color: rgb(1, 52, 32);
+}
+
+.form-label{
+    text-align: center;
+    justify-content: center;
+}
+
+.src_text{
+    font-style: italic;
+    color: red;
+}
