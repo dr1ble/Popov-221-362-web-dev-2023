@@ -8,6 +8,10 @@ body {
     flex: 1; /* Занимает все доступное пространство внутри flex-контейнера */
 }
 
+header, nav, main, footer {
+    box-sizing: border-box;
+}
+
 header {
     background-color: #333;
     color: #fff;
@@ -81,7 +85,20 @@ table th {
     background-color: #f2f2f2;
 }
 
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+}
+
 footer {
+    margin-top: auto;
     background-color: #333;
     color: #fff;
     padding: 20px;
@@ -165,6 +182,20 @@ footer {
     margin-bottom: 15px; 
 }
 
+.view-details-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.details-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .login-form label {
     display: block;
     margin-bottom: 8px;
@@ -196,6 +227,11 @@ footer {
     background-color: #0056b3;
 }
 
+
+main {
+    flex: 1;
+}
+
 /* Стили для логотипа */
 
 .logo-container {
@@ -213,6 +249,13 @@ footer {
 /* Стили для страницы Магазина */
 
 
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Равномерное распределение по горизонтали */
+    align-items: stretch; /* Высота карточек будет растянута до максимальной высоты в строке */
+}
+
 .product {
     width: 300px;
     margin: 20px;
@@ -220,12 +263,15 @@ footer {
     border: 1px solid #ddd;
     border-radius: 5px;
     cursor: pointer;
+    flex: 0 0 calc(33.33% - 40px); /* Рассчитываем ширину для 3-х элементов в строке с отступами */
+    box-sizing: border-box;
 }
 
 .product img {
     max-width: 100%;
     height: auto;
 }
+
 
 .product-details {
     display: none;
@@ -279,3 +325,5 @@ footer {
     list-style-type: none;
     padding: 0;
 }
+
+

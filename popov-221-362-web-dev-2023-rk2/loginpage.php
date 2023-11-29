@@ -12,25 +12,50 @@
     <header>
         <h1>Магазин Автомир</h1>
     </header>
-    
+
     <nav>
         <ul>
             <div class="logo-container">
                 <img src="images/logo.png" alt="Логотип">
             </div>
-            <li><a href='index.html' >Главная</a></li>
-            <li><a href ='store.php'>Магазин</a></li>
-            <li><a href ='loginpage.php'>Авторизация</a></li>
+            <li><a href='index.html'>Главная</a></li>
+            <li><a href='store.php'>Магазин</a></li>
+            <li><a href='loginpage.php'>Авторизация</a></li>
         </ul>
     </nav>
+
+
+    <?php
+    // Подключение к базе данных
+    include 'db.php';
+
+    // Обработка данных формы
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "Пользователь найден";
+            header("Location: store.php");
+            exit;
+        } else {
+            // Ошибка: неправильное имя пользователя или пароль
+            echo '<div style="text-align: center; margin-top: 50px;">Неверное имя пользователя или пароль</div>';
+        }
+    }
+    ?>
+
     <div class="login-container">
-        <form class="login-form" action="https://httpbin.org/post" method="POST">
+        <form class="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <h2>Вход</h2>
             <label for="username">Логин:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username" placeholder="user" required>
 
             <label for="password">Пароль:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" placeholder="user" required>
 
             <label>
                 <input type="checkbox" name="remember"> Запомнить меня
@@ -41,9 +66,9 @@
     </div>
     <footer>
         <p>&copy; 2023. Все права защищены.</p>
-        <p>Адрес: г. Москва, ул. Пушкина, д. 10</p>
+        <p>Адрес Магазина: г. Москва, ул. Пушкина, д. 10</p>
         <p>Телефон: +7 (999) 123-45-67</p>
-    
+
     </footer>
 </body>
 

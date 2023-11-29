@@ -12,22 +12,23 @@
     <header>
         <h1>Магазин Автомир</h1>
     </header>
-    
+
     <nav>
         <ul>
             <div class="logo-container">
                 <img src="images/logo.png" alt="Логотип">
             </div>
-            <li><a href='index.html' >Главная</a></li>
-            <li><a href ='store.php'>Магазин</a></li>
-            <li><a href ='loginpage.php'>Авторизация</a></li>
+            <li><a href='index.html'>Главная</a></li>
+            <li><a href='store.php'>Магазин</a></li>
+            <li><a href='loginpage.php'>Авторизация</a></li>
+            <li><a>Список покупок</a></li>
         </ul>
     </nav>
 
-    <main> 
-        <div class="wrapper" id="productContainer" onClick="showDetails(1)">
-        <!-- Ваш контент здесь -->
-        <!-- <div class="product" onclick="showDetails(1)">
+    <main>
+        <div class="wrapper">
+            <!-- Ваш контент здесь -->
+            <!-- <div class="product" onclick="showDetails(1)">
             <img src="product1.jpg" alt="Продукт 1">
             <h3>Продукт 1</h3>
             <p>Цена: $50</p>
@@ -42,20 +43,19 @@
         </div>
 
         </div> -->
-        <!-- Добавьте другие продукты здесь -->
+            <!-- Добавьте другие продукты здесь -->
 
 
-        <div class="products">
-                <?php
-                // Подключение к базе данных
-                include 'db.php';
+            <?php
+            // Подключение к базе данных
+            include 'db.php';
 
-                // Получение информации о товарах из базы данных
-                $sql = "SELECT * FROM products";
-                $result = $conn->query($sql);
-                ?>
+            // Получение информации о товарах из базы данных
+            $sql = "SELECT * FROM products";
+            $result = $conn->query($sql);
+            ?>
 
-                <div class="product-container">
+            <div class="product-container">
                 <?php
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -64,75 +64,83 @@
                         $productPrice = $row['price'];
                         $productDescription = $row['description'];
                         $productQuantity = $row['stock_quantity'];
-                        $productPhotoPath = $row['photo_path']; // Новое поле для хранения пути к фотографии
-                
+                        $productPhotoPath = $row['photo_path'];
                         ?>
                         <div class="product">
-                            <h3><?php echo $productName; ?></h3>
-                            <img src="<?php echo $productPhotoPath; ?>" alt="<?php echo $productName; ?>" width="200" height="200">
-                            <p><?php echo $productDescription; ?></p>
-                            <p>$<?php echo $productPrice; ?></p>
-                            <p>Quantity: <?php echo $productQuantity; ?></p>
+                            <h3>
+                                <?php echo $productName; ?>
+                            </h3>
+                            <img src="<?php echo $productPhotoPath; ?>" alt="<?php echo $productName; ?>" width="200"
+                                height="200">
+                            <p>
+                                <?php echo $productDescription; ?>
+                            </p>
+                            <p>$
+                                <?php echo $productPrice; ?>
+                            </p>
+                            <p>Количество:
+                                <?php echo $productQuantity; ?>
+                            </p>
                             <button class="view-details-btn" onclick="showDetails(<?php echo $productId; ?>)">Подробнее</button>
-                            <button class="add-to-cart-btn" onclick="addToCart(<?php echo $productId; ?>)">Добавить в корзину</button>
+                            <button class="add-to-cart-btn" onclick="addToCart(<?php echo $productId; ?>, '<?php echo $productName; ?>', <?php echo $productPrice; ?>)">Добавить в корзину</button>
                         </div>
+
                         <?php
                     }
                 } else {
                     echo "Нет доступных товаров";
                 }
                 ?>
+
+
             </div>
-            <a href="shopping_list.php">
-            Перейти к списку покупок</a>
+            <div class="cart-container">
+                <h2>Корзина</h2>
+                <ul id="cart-list"></ul>
+            </div>
 
             <script>
                 function showDetails(productId) {
+                    console.log(<?php echo $productId; ?>);
                     window.location.href = 'product_details.php?id=' + productId;
                 }
             </script>
 
-    <div class="cart-container">
-        <h2>Корзина</h2>
-        <ul id="cart-list"></ul>
-    </div>
+            <script>
+                var cartItems = [];
 
+                function addToCart(productId, productName, productPrice) {
+                    var newItem = {
+                        id: productId,
+                        name: productName,
+                        price: productPrice
+                    };
 
-<script>
-    var cartItems = [];
+                    var existingItem = cartItems.find(item => item.id === productId);
 
-    function addToCart(productId, productName, productPrice) {
-        var newItem = {
-            id: productId,
-            name: productName,
-            price: productPrice
-        };
+                    if (!existingItem) {
+                        cartItems.push(newItem);
 
-        var existingItem = cartItems.find(item => item.id === productId);
+                        updateCartDisplay();
+                    } else {
+                        alert('Товар уже добавлен в корзину.');
+                    }
+                }
 
-        if (!existingItem) {
-            cartItems.push(newItem);
+                function updateCartDisplay() {
 
-            updateCartDisplay();
-        } else {
-            alert('Товар уже добавлен в корзину.');
-        }
-    }
+                    var cartList = document.getElementById('cart-list');
 
-    function updateCartDisplay() {
+                    cartList.innerHTML = '';
 
-        var cartList = document.getElementById('cart-list');
+                    cartItems.forEach(item => {
+                        var listItem = document.createElement('li');
+                        listItem.textContent = `${item.name} - $${item.price}`;
+                        cartList.appendChild(listItem);
+                    });
+                }
+            </script>
 
-        cartList.innerHTML = '';
-
-        cartItems.forEach(item => {
-            var listItem = document.createElement('li');
-            listItem.textContent = `${item.name} - $${item.price}`;
-            cartList.appendChild(listItem);
-        });
-    }
-</script>
-        
 
     </main>
 
